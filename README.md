@@ -11,29 +11,37 @@
 
 - Open u Terminal, and type
 ```
-git Clone ..
+git clone /*repo ini*/
 ```
 - enter dir and open codeitor
 ```
-cd ..
-code ..
+cd /*nama folder hasil repo*/
+code .
 ```
 - Install Composer in this Project
 ```
-composer ..
+composer install
 ```
 - Copy file .env.exemple sekaligus ubah nama to .env
 ```
-cp ..
+cp .env.example .env
 ```
 - Generate key_app nya
 ```
-php artisan key:..
+php artisan key:generate
 ```
 
-- Buat DB-nya di [phpmyadmin](http://localhost/phpmyadmin/)
-- Start u Project
+- Buat DB-nya di [phpmyadmin](http://localhost/phpmyadmin/) dengan nama db <strong>live_coding</strong>
+
+- Jalankan dulu PHP migrate nya dengan perintah
+
 ```
-php artisan
+php artisan migrate --seed
+```
+
+- Start u Project
+
+```
+php artisan serve
 ```
 

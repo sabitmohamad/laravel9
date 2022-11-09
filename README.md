@@ -7,13 +7,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-### How to Clone Larvel Project
+# How to Clone Larvel Project
 
-# nge-Clone dulu
-- Pilih Folder Dimana aja
-- Copy this url repo
-```
-https://github.com/FathHaq/live-coding.git
 ```
 - Open u Terminal, and type
 ```

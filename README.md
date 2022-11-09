@@ -9,28 +9,28 @@
 
 # How to Clone Larvel Project
 
-```
 - Open u Terminal, and type
 ```
-git Clone 
+git Clone ..
 ```
 - enter dir and open codeitor
 ```
-cd
-code 
+cd ..
+code ..
 ```
 - Install Composer in this Project
 ```
-composer 
+composer ..
 ```
 - Copy file .env.exemple sekaligus ubah nama to .env
 ```
-cp
+cp ..
 ```
 - Generate key_app nya
 ```
-php artisan key:
+php artisan key:..
 ```
+
 - Buat DB-nya di [phpmyadmin](http://localhost/phpmyadmin/)
 - Start u Project
 ```

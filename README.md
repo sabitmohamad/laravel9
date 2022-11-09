@@ -36,7 +36,7 @@ cp
 ```
 php artisan key:
 ```
-- Buat DB-nya di phpmyadmin[http://localhost/phpmyadmin/]
+- Buat DB-nya di [phpmyadmin](http://localhost/phpmyadmin/)
 - Start u Project
 ```
 php artisan

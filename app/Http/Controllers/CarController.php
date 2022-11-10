@@ -39,7 +39,6 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-
         //create post
         Car::create([
             'name'     => $request->name,
@@ -91,7 +90,7 @@ class CarController extends Controller
         // //delete old image
         // Storage::delete('public/posts/' . $car->img_url);
 
-        //update car 
+        //update car
         $car->update([
             'name'     => $request->name,
             'tarif'   => $request->tarif,
@@ -110,8 +109,10 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
-        //
+        $car = Car::find($id);
+        $car->delete();
+        return redirect()->route('a.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -27,7 +28,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -38,7 +39,18 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //create post
+        Car::create([
+            'name'     => $request->name,
+            'tarif'   => $request->tarif,
+            'img_url' => $request->img_url,
+            'durasi' => $request->durasi,
+            'status' => $request->status
+        ]);
+
+        //redirect to index
+        return redirect()->route('a.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -58,10 +70,12 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(Car $car)
+    public function edit($id)
     {
-        //
+        $car = Car::find($id);
+        return view('edit', compact('car'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -70,9 +84,24 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(Request $request, $id)
     {
-        //
+        $car = Car::find($id);
+
+        // //delete old image
+        // Storage::delete('public/posts/' . $car->img_url);
+
+        //update car 
+        $car->update([
+            'name'     => $request->name,
+            'tarif'   => $request->tarif,
+            'img_url' => $request->img_url,
+            'durasi' => $request->durasi,
+            'status' => $request->status
+        ]);
+
+        //redirect to index
+        return redirect()->route('a.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**

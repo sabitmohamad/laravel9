@@ -8,6 +8,7 @@
   </head>
   <body>
 		<section class="p-5 w-75 mx-auto">
+			<a href="{{ route('a.create') }}" class="btn btn-md btn-success mb-3">TAMBAH</a>
 			<h1 class="text-center mb-5">Rental Mobil</h1>
 			<table class="table table-striped">
 				<thead>
@@ -16,18 +17,35 @@
 						<th scope="col">Name</th>
 						<th scope="col">Price</th>
 						<th scope="col">Image</th>
+						<th scope="col">Durasi</th>
+						<th scope="col">Status</th>
+						<th scope="col">Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($cars as $car)
+					@forelse ($cars as $car)
 						<tr class="mx-auto">
-							<th scope="row">{{ $car->id }}</th>
+							<th scope="row">{{ $loop->iteration }}</th>
 							<td>{{ $car->name }}</td>
 							<td>${{ $car->tarif }}</td>
-							<td><img src="{{ $car->img_url }}" alt="" width="200"></td>
-						</tr>
+							<td class="text-center">
+								<img src="{{ $car->img_url}}" class="rounded" style="width: 150px">
+							</td>
+							<td>{{ $car->durasi }}</td>
+							<td>{{ $car->status }}</td>
+
+							<td class="text-center">
+								<form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('a.destroy', $car->id) }}" method="POST">
+									@csrf
+									@method('DELETE')
+									<a href="{{ route('a.edit',$car->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+									<button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+								</form>
+							</td>
 							
-					@endforeach
+						</tr>
+						@empty	
+					@endforelse
 				</tbody>
 			</table>
 		</section>

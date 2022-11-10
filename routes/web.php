@@ -14,4 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', CarController::class);
+Route::resource('/a', CarController::class);
+Route::get('/1/2', function () {
+    return view('edit');
+});
